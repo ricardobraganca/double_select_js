@@ -1,0 +1,65 @@
+
+.dbl-principal {
+
+    width: 150px;
+    height: 250px;
+    border: black;
+    border-style: solid;
+}
+
+.dbl-secundario {
+
+    width: 150px;
+    height: 250px;
+    border: black;
+    border-style: solid;
+}
+
+.div-dbl-select {
+
+    display: flex;
+    align-items: center;
+}
+
+.div-dbl-select .btn-group {
+
+    margin: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.div-dbl-select .btn-move {
+
+    margin: 2px;
+}
+
+.div-search input {
+
+    width: 150px;
+    margin-bottom: 5px;
+}
+
+.search-principal {
+
+    margin-right: 40px;
+}
+
+.search-secundario {
+
+
+}
+
+.div-up-down {
+    
+    transform: rotate(90deg);
+    position: relative;
+    left: -6px;   
+}
+
+.div-up-down button {
+
+    padding-left: 3;
+    padding-right: 4;
+    width: 21px;
+    height: 31px;
+}
