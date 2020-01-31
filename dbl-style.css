@@ -1,15 +1,43 @@
+.div-dbl-principal {
+
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.div-dbl-principal input{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
 
 .dbl-principal {
 
-    width: 150px;
+    width: 100%;
     height: 250px;
     border: black;
     border-style: solid;
 }
 
+.div-dbl-secundario {
+
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.div-dbl-secundario input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
 .dbl-secundario {
 
-    width: 150px;
+    width: 100%;
     height: 250px;
     border: black;
     border-style: solid;

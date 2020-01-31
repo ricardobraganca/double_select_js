@@ -15,8 +15,8 @@ class doblesel {
         let $div_dbl = document.createElement('div');
         let $dbl_secundario = document.createElement('select');
         let $div_dbl_principal = document.createElement('div');
+        let $div_dbl_secundario = document.createElement('div');
         let $div_btn = document.createElement('div');
-        let $div_search = document.createElement('div')
         let $div_up_down = document.createElement('div');
         let $btn_add = document.createElement('button');
         let $btn_remove = document.createElement('button');
@@ -31,12 +31,21 @@ class doblesel {
         this.dbl_secundario = $dbl_secundario;
         this.dbl_principal = $dbl_principal;
 
+        this._add_style_block($dbl_principal);
+
         $edt_search.type="search";
         $edt_search.placeholder=label_edit_filter;
         $edt_search.classList.add('search-principal');
         $edt_search.addEventListener("input", (e)=>{
             e.preventDefault();
             this._filter($dbl_principal, $edt_search.value);
+        });
+
+        $edt_search.addEventListener("keydown", (e)=>{
+            
+            if(e.which == 13){
+                e.preventDefault();
+            }
         });
 
         $edt_search_sec.type="search";
@@ -115,17 +124,23 @@ class doblesel {
             this._addSelectedValues($dbl_secundario, $dbl_principal);
         });
 
-        $div_search.classList.add('div-search');
-        $div_search.appendChild($edt_search);
-        $div_search.appendChild($edt_search_sec);
-        $dbl_principal.parentNode.appendChild($div_search);
-
         $dbl_principal.parentNode.appendChild($div_dbl);
+
         $div_dbl.classList.add('div-dbl-select');
 
-        $div_dbl.appendChild($dbl_principal);
+        $div_dbl_principal.classList.add('div-dbl-principal');
+        $div_dbl_principal.appendChild($edt_search);
+        $div_dbl_principal.appendChild($dbl_principal);
+        $div_dbl.appendChild($div_dbl_principal);
+
+        $div_dbl_secundario.classList.add('div-dbl-secundario');
+        $div_dbl_secundario.appendChild($edt_search_sec);
+        $div_dbl_secundario.appendChild($dbl_secundario);
+        $div_dbl.appendChild($div_dbl_secundario);
+
+        //$div_dbl.appendChild($dbl_principal);
         $div_dbl.appendChild($div_btn);
-        $div_dbl.appendChild($dbl_secundario);
+        $div_dbl.appendChild($div_dbl_secundario);
         $div_dbl.appendChild($div_up_down);
 
         this._load_secundario($dbl_principal, $dbl_secundario);
@@ -150,8 +165,11 @@ class doblesel {
         let options = $dbl_base.querySelectorAll('option');
 
         options.forEach(function(item, index){
-            item.setAttribute('selected', selected);
-            $dbl_receptor.appendChild(item);
+            if(item.style.display=="block"){
+                item.setAttribute('selected', selected);
+                $dbl_receptor.appendChild(item);
+            }
+
         });
     }
 
@@ -238,6 +256,14 @@ class doblesel {
                 
                 item.setAttribute('selected', 'true');
                 dbl_secundario.appendChild(item);
+        });
+    }
+
+    _add_style_block(dbl){
+        let options = dbl.querySelectorAll('option');
+
+        options.forEach(function(item){
+            item.style.display="block";
         });
     }
 
